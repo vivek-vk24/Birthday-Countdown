@@ -277,7 +277,7 @@ font-size:1.2rem;
 </div>
 
 <audio id="bgmusic" preload="auto" loop>
-    music.mp3audio/mpeg">
+    music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
   
@@ -321,10 +321,10 @@ Every second brings us closer to your special day...
 
 <div class="gallery">
 
-photo1.jpeg
-photo2.jpeg
-photo3.jpeg
-photo4.jpeg
+<img src="photo1.jpeg" alt="Memory 1">
+<img src="photo2ry 2">
+<img src="photo3.jpeg" alt="Memory 3">
+<img src="photo4.jpeg" alt="Memory 4">
 
 </div>
 
@@ -601,23 +601,28 @@ document.body.appendChild(c);
 
 }
 
-document.addEventListener(
-    "click",
-    function firstInteraction(){
+/* MUSIC */
 
-        music.play()
-        .then(() => {
+const music = document.getElementById("bgmusic");
+const musicBtn = document.getElementById("musicBtn");
 
-            musicBtn.innerHTML =
-            "🔊 Pause Music";
+function toggleMusic() {
 
-        })
-        .catch(() => {});
+    if (music.paused) {
 
-    },
-    { once: true }
-);
+        music.play();
 
+        musicBtn.innerHTML = "🔊 Pause Music";
+
+    } else {
+
+        music.pause();
+
+        musicBtn.innerHTML = "🎵 Play Our Song";
+
+    }
+
+}
 </script>
 
 </body>
