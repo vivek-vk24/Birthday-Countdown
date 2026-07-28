@@ -6,6 +6,7 @@
 <title>For Jaanu ❤️</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -17,34 +18,7 @@ body{
 background:linear-gradient(135deg,#ff4f87,#ff7db5,#ffd5e9);
 color:white;
 overflow-x:hidden;
-min-height:100vh;
 }
-
-/* Floating Hearts */
-
-.heart{
-position:fixed;
-bottom:-50px;
-pointer-events:none;
-animation:floatUp linear infinite;
-z-index:1;
-}
-
-@keyframes floatUp{
-0%{
-transform:translateY(0);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
-}
-
-/* Countdown */
 
 #countdownPage{
 height:100vh;
@@ -54,8 +28,6 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-position:relative;
-z-index:5;
 }
 
 #countdownPage h1{
@@ -64,64 +36,32 @@ margin-bottom:15px;
 }
 
 #countdown{
-margin-top:25px;
 font-size:2rem;
 font-weight:bold;
 padding:25px;
 border-radius:25px;
-background:rgba(255,255,255,.17);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(8px);
 }
-
-/* Birthday Page */
 
 #birthdayPage{
 display:none;
-position:relative;
-z-index:5;
 padding-bottom:60px;
 }
 
 .hero{
-padding:70px 20px 40px;
+padding:60px 20px;
 text-align:center;
 }
-
-.hero h1{
-font-size:3rem;
-margin-bottom:10px;
-}
-
-.music-wrap{
-text-align:center;
-margin:20px;
-}
-
-.music-wrap button{
-padding:15px 25px;
-border:none;
-border-radius:30px;
-font-size:1rem;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* Letter */
 
 .letter{
 max-width:900px;
-margin:25px auto;
+margin:30px auto;
 padding:25px;
 background:rgba(255,255,255,.15);
 border-radius:25px;
-line-height:1.9;
+line-height:2;
 }
-
-#typedLetter{
-white-space:pre-wrap;
-}
-
-/* Gallery */
 
 .gallery{
 display:grid;
@@ -139,14 +79,12 @@ object-fit:cover;
 border-radius:20px;
 }
 
-/* Flip Cards */
-
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-padding:20px;
+padding:30px;
 }
 
 .flip-card{
@@ -156,18 +94,19 @@ perspective:1000px;
 }
 
 .flip-inner{
+position:relative;
 width:100%;
 height:100%;
-position:relative;
+transition:0.8s;
 transform-style:preserve-3d;
-transition:.8s;
 }
 
 .flip-card:hover .flip-inner{
 transform:rotateY(180deg);
 }
 
-.front,.back{
+.front,
+.back{
 position:absolute;
 width:100%;
 height:100%;
@@ -190,8 +129,6 @@ color:#ff4081;
 transform:rotateY(180deg);
 }
 
-/* Timeline */
-
 .timeline{
 max-width:900px;
 margin:auto;
@@ -200,19 +137,18 @@ padding:20px;
 
 .timeline-item{
 background:rgba(255,255,255,.15);
-padding:18px;
-margin:12px 0;
-border-radius:18px;
+padding:20px;
+margin:15px 0;
+border-radius:20px;
 }
-
-/* Envelope */
 
 .envelope{
 text-align:center;
-padding:40px;
+padding:50px;
 }
 
-.envelope button{
+.envelope button,
+.music-controls button{
 padding:15px 25px;
 border:none;
 border-radius:25px;
@@ -220,20 +156,45 @@ cursor:pointer;
 font-weight:bold;
 }
 
+.music-controls{
+position:fixed;
+top:15px;
+right:15px;
+z-index:9999;
+}
+
 #surprise{
 display:none;
 margin-top:20px;
-font-size:1.1rem;
+font-size:1.2rem;
 }
 
-/* Confetti */
+.heart{
+position:fixed;
+bottom:-50px;
+pointer-events:none;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
 
 .confetti{
 position:fixed;
+top:-10px;
 width:10px;
 height:10px;
-top:-10px;
-z-index:999;
 animation:fall linear infinite;
 }
 
@@ -243,44 +204,28 @@ transform:translateY(120vh) rotate(720deg);
 }
 }
 
-@media(max-width:768px){
-
-#countdownPage h1{
-font-size:2.2rem;
-}
-
-.hero h1{
-font-size:2.2rem;
-}
-
-#countdown{
-font-size:1.2rem;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
-<!-- AUDIO -->
+<div class="music-controls">
+<button id="musicBtn">
+🎵 Play Our Song
+</button>
+</div>
 
-music.mp3
-
-<!-- COUNTDOWN PAGE -->
-
-<div id="countdownPage">
+<audio id="bgmusic" preload="auto" loop>
+<source src="music.mp3" type="audio/mpegge">
 
 <h1>❤️ For Jaanu ❤️</h1>
 
-<p>Every second brings us closer to your special day...</p>
+<p style="margin-bottom:20px;">
+Every second brings us closer to your special day...
+</p>
 
 <div id="countdown"></div>
 
 </div>
-
-<!-- BIRTHDAY PAGE -->
 
 <div id="birthdayPage">
 
@@ -289,31 +234,22 @@ music.mp3
 <h3>Today is all about you ❤️</h3>
 </div>
 
-<div class="music-wrap">
-<button id="musicBtn">🎵 Play Our Song</button>
-</div>
-
 <div class="letter">
-
 <h2>💌 A Letter From Sonuu</h2>
 <br>
-
 <div id="typedLetter"></div>
-
 </div>
 
-<h2 style="text-align:center">📸 Our Memories</h2>
+<h2 style="text-align:center;">📸 Our Memories</h2>
 
 <div class="gallery">
-
 <img src="photo1.jpeg" alt="">
 <img src="photo2.jpeg" alt="">
-" alt="">
+<img src="photo3.jpeg" alt="">
 <img src="photo4.jpeg" alt="">
-
 </div>
 
-<h2 style="text-align:center;margin-top:30px;">
+<h2 style="text-align:center;margin-top:40px;">
 ❤️ Reasons I Love You
 </h2>
 
@@ -321,4 +257,201 @@ music.mp3
 
 <div class="flip-card">
 <div class="flip-inner">
-<
+<div class="front">❤️ Reason #1</div>
+<div class="back">Your smile lights up every day.</div>
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+<div class="front">❤️ Reason #2</div>
+<div class="back">You make ordinary moments magical.</div>
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+<div class="front">❤️ Reason #3</div>
+<div class="back">Your kindness inspires me.</div>
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+<div class="front">❤️ Reason #4</div>
+<div class="back">You make life happier just by being you.</div>
+</div>
+</div>
+
+</div>
+
+<div class="timeline">
+<h2 style="text-align:center;">✨ Our Journey</h2>
+
+<div class="timeline-item">🌸 The day our story began</div>
+<div class="timeline-item">💬 Endless conversations</div>
+<div class="timeline-item">❤️ Beautiful memories</div>
+<div class="timeline-item">🎂 Celebrating your birthday</div>
+<div class="timeline-item">🌈 More memories to come</div>
+
+</div>
+
+<div class="envelope">
+
+<button onclick="openEnvelope()">
+🎁 Open Secret Envelope
+</button>
+
+<div id="surprise">
+
+💌 Jaanu,
+
+You are one of the most beautiful blessings in my life.
+
+May your days always be filled with happiness, peace, success and love.
+
+❤️ Sonuu
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const unlockTime =
+new Date("2026-07-29T00:00:00+05:30");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = unlockTime - now;
+
+if(diff <= 0){
+
+document.getElementById("countdownPage").style.display="none";
+document.getElementById("birthdayPage").style.display="block";
+
+startConfetti();
+startTyping();
+
+clearInterval(timer);
+return;
+}
+
+const d=Math.floor(diff/86400000);
+const h=Math.floor((diff%86400000)/3600000);
+const m=Math.floor((diff%3600000)/60000);
+const s=Math.floor((diff%60000)/1000);
+
+document.getElementById("countdown").innerHTML=
+`${d} Days<br>${h} Hours ${m} Minutes ${s} Seconds`;
+
+}
+
+const timer=setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* HEARTS */
+
+for(let i=0;i<50;i++){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.animationDuration=(6+Math.random()*8)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+function openEnvelope(){
+
+document.getElementById("surprise").style.display="block";
+
+}
+
+/* MUSIC */
+
+const music=document.getElementById("bgmusic");
+const musicBtn=document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click",()=>{
+
+if(music.paused){
+
+music.play();
+musicBtn.innerHTML="🔊 Pause Music";
+
+}else{
+
+music.pause();
+musicBtn.innerHTML="🎵 Play Our Song";
+
+}
+
+});
+
+/* LETTER */
+
+const letter=`My Dearest Jaanu,
+
+On your special day, I want you to know how much happiness you bring into my life.
+
+Thank you for every smile, every memory and every beautiful moment.
+
+May your birthday be filled with endless joy and love.
+
+❤️ Forever,
+Sonuu`;
+
+function startTyping(){
+
+let i=0;
+
+const el=document.getElementById("typedLetter");
+
+const type=setInterval(()=>{
+
+el.innerHTML+=letter.charAt(i);
+
+i++;
+
+if(i>=letter.length){
+clearInterval(type);
+}
+
+},40);
+
+}
+
+function startConfetti(){
+
+for(let i=0;i<150;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.background=
+`hsl(${Math.random()*360},100%,60%)`;
+
+c.style.animationDuration=
+(2+Math.random()*5)+"s";
+
+document.body.appendChild(c);
+
+}
+
+}
+
+</script>
+</body>
+</html>
