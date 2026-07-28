@@ -271,13 +271,16 @@ font-size:1.2rem;
 <body>
 
 <div class="music-controls">
-<button onclick="playMusic()">🎵 Play Our Song</button>
+    <button id="musicBtn" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
 </div>
 
-<audio id="bgmusic" loop>
-music.mp3">
+<audio id="bgmusic" preload="auto" loop>
+    music.mp3audio/mpeg">
+    Your browser does not support the audio element.
 </audio>
-
+  
 <!-- COUNTDOWN -->
 
 <div id="countdownPage">
@@ -489,8 +492,38 @@ document.body.appendChild(heart);
 
 /* MUSIC */
 
-function playMusic(){
-document.getElementById("bgmusic").play();
+const music =
+document.getElementById("bgmusic");
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play()
+        .then(() => {
+
+            musicBtn.innerHTML =
+            "🔊 Pause Music";
+
+        })
+        .catch(err => {
+
+            console.log(err);
+
+        });
+
+    }else{
+
+        music.pause();
+
+        musicBtn.innerHTML =
+        "🎵 Play Our Song";
+
+    }
+
 }
 
 /* LETTER TYPING */
@@ -567,6 +600,23 @@ document.body.appendChild(c);
 }
 
 }
+
+document.addEventListener(
+    "click",
+    function firstInteraction(){
+
+        music.play()
+        .then(() => {
+
+            musicBtn.innerHTML =
+            "🔊 Pause Music";
+
+        })
+        .catch(() => {});
+
+    },
+    { once: true }
+);
 
 </script>
 
