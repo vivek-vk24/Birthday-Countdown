@@ -16,16 +16,12 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff6b9d,#ff8dc7,#ffd1e8);
-overflow-x:hidden;
+background:linear-gradient(135deg,#ff4f87,#ff7db5,#ffd5e9);
 color:white;
+overflow-x:hidden;
 }
 
-.hidden{
-display:none;
-}
-
-/* COUNTDOWN PAGE */
+/* COUNTDOWN SCREEN */
 
 #countdownPage{
 height:100vh;
@@ -39,16 +35,16 @@ padding:20px;
 
 #countdownPage h1{
 font-size:3rem;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 #countdown{
 font-size:2rem;
-font-weight:700;
-background:rgba(255,255,255,.15);
+font-weight:bold;
 padding:25px;
-border-radius:20px;
-backdrop-filter:blur(10px);
+border-radius:25px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(8px);
 box-shadow:0 0 20px rgba(255,255,255,.2);
 }
 
@@ -60,65 +56,58 @@ padding-bottom:60px;
 }
 
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:30px;
+padding:60px 20px;
 text-align:center;
 }
 
 .hero h1{
 font-size:3rem;
-margin-bottom:20px;
-}
-
-.hero p{
-max-width:900px;
-line-height:1.8;
-font-size:1.1rem;
+margin-bottom:15px;
 }
 
 /* LETTER */
 
 .letter{
-margin:40px auto;
 max-width:900px;
+margin:30px auto;
 padding:25px;
 background:rgba(255,255,255,.15);
 border-radius:25px;
+line-height:2;
 backdrop-filter:blur(10px);
-box-shadow:0 0 25px rgba(255,255,255,.15);
+}
+
+#typedLetter{
+white-space:pre-wrap;
 }
 
 /* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
+padding:20px;
 max-width:1100px;
 margin:auto;
-padding:20px;
 }
 
 .gallery img{
 width:100%;
-height:260px;
+height:280px;
 object-fit:cover;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
+box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-/* REASONS FLIP CARDS */
+/* FLIP CARDS */
 
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-padding:20px;
+padding:30px;
 }
 
 .flip-card{
@@ -131,33 +120,34 @@ perspective:1000px;
 position:relative;
 width:100%;
 height:100%;
-transition:transform .8s;
 transform-style:preserve-3d;
+transition:0.8s;
 }
 
 .flip-card:hover .flip-inner{
 transform:rotateY(180deg);
 }
 
-.front,.back{
+.front,
+.back{
 position:absolute;
 width:100%;
 height:100%;
-backface-visibility:hidden;
 border-radius:20px;
 display:flex;
 align-items:center;
 justify-content:center;
 padding:20px;
 text-align:center;
+backface-visibility:hidden;
 }
 
 .front{
-background:#ff5c9d;
+background:#ff5f9d;
 }
 
 .back{
-background:#ffffff;
+background:white;
 color:#ff4081;
 transform:rotateY(180deg);
 }
@@ -166,68 +156,80 @@ transform:rotateY(180deg);
 
 .timeline{
 max-width:900px;
-margin:40px auto;
+margin:auto;
 padding:20px;
 }
 
 .timeline-item{
 background:rgba(255,255,255,.15);
-margin:15px 0;
 padding:20px;
-border-radius:18px;
+margin:15px 0;
+border-radius:20px;
 }
 
-/* SURPRISE ENVELOPE */
+/* SURPRISE */
 
 .envelope{
-margin-top:40px;
 text-align:center;
+padding:50px;
 }
 
 .envelope button{
-padding:15px 30px;
-border:none;
-border-radius:30px;
 background:white;
 color:#ff4081;
-font-size:1rem;
+border:none;
+padding:15px 30px;
+border-radius:30px;
 cursor:pointer;
-font-weight:700;
+font-size:1rem;
+font-weight:bold;
 }
 
 #surprise{
 display:none;
 margin-top:20px;
-font-size:1.3rem;
-padding:20px;
+font-size:1.2rem;
+}
+
+/* MUSIC */
+
+.music-controls{
+position:fixed;
+top:15px;
+right:15px;
+z-index:9999;
+}
+
+.music-controls button{
+padding:10px 15px;
+border:none;
+border-radius:20px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* HEARTS */
 
 .heart{
 position:fixed;
-bottom:-50px;
-pointer-events:none;
+bottom:-40px;
 animation:floatUp linear infinite;
-z-index:999;
+pointer-events:none;
+z-index:1;
 }
 
 @keyframes floatUp{
-
 0%{
 transform:translateY(0);
 opacity:0;
 }
-
-20%{
+15%{
 opacity:1;
 }
-
 100%{
 transform:translateY(-110vh);
 opacity:0;
 }
-
 }
 
 /* CONFETTI */
@@ -242,28 +244,23 @@ z-index:999;
 }
 
 @keyframes fall{
-
 to{
 transform:translateY(120vh) rotate(720deg);
 }
-
-}
-
-audio{
-position:fixed;
-bottom:10px;
-right:10px;
-z-index:9999;
 }
 
 @media(max-width:768px){
+
+#countdownPage h1{
+font-size:2.2rem;
+}
 
 .hero h1{
 font-size:2.2rem;
 }
 
 #countdown{
-font-size:1.3rem;
+font-size:1.2rem;
 }
 
 }
@@ -273,19 +270,23 @@ font-size:1.3rem;
 
 <body>
 
-<audio controls autoplay loop>
-music.mp3
+<div class="music-controls">
+<button onclick="playMusic()">🎵 Play Our Song</button>
+</div>
+
+<audio id="bgmusic" loop>
+music.mp3">
 </audio>
 
-<!-- COUNTDOWN PAGE -->
+<!-- COUNTDOWN -->
 
 <div id="countdownPage">
 
 <h1>❤️ For Jaanu ❤️</h1>
 
-<h3>Your special day is almost here...</h3>
-
-<br>
+<p style="margin-bottom:20px;">
+Every second brings us closer to your special day...
+</p>
 
 <div id="countdown"></div>
 
@@ -299,42 +300,19 @@ music.mp3
 
 <h1>🎉 Happy Birthday Jaanu 🎉</h1>
 
-<p>
-Today the world celebrates the beautiful soul who fills my days with warmth,
-smiles, comfort, and happiness.
-</p>
+<h3>Today is all about you ❤️</h3>
 
 </section>
 
-<section class="letter">
+<div class="letter">
 
-<h2>💌 A Letter For You</h2>
+<h2>💌 A Letter From Sonuu</h2>
 
 <br>
 
-<p style="line-height:2">
+<div id="typedLetter"></div>
 
-My Dearest Jaanu,
-
-As this special day arrives, I want you to know how incredibly grateful I am for you.
-
-You bring light into ordinary moments, peace into difficult days, and happiness into places where I never expected to find it.
-
-You are one of the most beautiful chapters of my life and every conversation, every laugh, every memory with you is something I treasure deeply.
-
-May your birthday be filled with joy, love, good health, success, and countless reasons to smile.
-
-No matter what the future brings, I will always wish for your happiness.
-
-Sending you the warmest hugs, infinite affection, and all my love today and always.
-
-❤️ Forever with admiration and care,
-
-Sonuu
-
-</p>
-
-</section>
+</div>
 
 <h2 style="text-align:center;">📸 Our Memories</h2>
 
@@ -356,7 +334,7 @@ photo4.jpg
 <div class="flip-card">
 <div class="flip-inner">
 <div class="front">❤️ Reason #1</div>
-<div class="back">Your smile brightens every day.</div>
+<div class="back">Your smile lights up every day.</div>
 </div>
 </div>
 
@@ -377,7 +355,7 @@ photo4.jpg
 <div class="flip-card">
 <div class="flip-inner">
 <div class="front">❤️ Reason #4</div>
-<div class="back">You make life feel lighter and happier.</div>
+<div class="back">You make life happier just by being you.</div>
 </div>
 </div>
 
@@ -385,13 +363,29 @@ photo4.jpg
 
 <div class="timeline">
 
-<h2 style="text-align:center;">✨ Our Journey</h2>
+<h2 style="text-align:center;">
+✨ Our Journey
+</h2>
 
-<div class="timeline-item">🌸 The day our story began.</div>
-<div class="timeline-item">💬 Endless conversations.</div>
-<div class="timeline-item">❤️ Beautiful shared memories.</div>
-<div class="timeline-item">🎂 Celebrating your birthday.</div>
-<div class="timeline-item">🌈 Many adventures ahead.</div>
+<div class="timeline-item">
+🌸 The day our story began
+</div>
+
+<div class="timeline-item">
+💬 Endless conversations that never felt long
+</div>
+
+<div class="timeline-item">
+❤️ Countless beautiful memories together
+</div>
+
+<div class="timeline-item">
+🎂 Celebrating your birthday
+</div>
+
+<div class="timeline-item">
+🌈 Many more memories waiting ahead
+</div>
 
 </div>
 
@@ -407,13 +401,15 @@ photo4.jpg
 
 Jaanu,
 
-If I had one wish today, it would be for your happiness to multiply every single day.
+You are one of the most beautiful blessings in my life.
 
-You deserve a lifetime of smiles, peace, success, love, and beautiful surprises.
+May your days be filled with sunshine, your heart with happiness, and your journey with endless success.
 
-Never forget how special and appreciated you are.
+Thank you for being exactly who you are.
 
-❤️
+Sending the warmest hugs and all my love.
+
+❤️ Sonuu
 
 </div>
 
@@ -423,45 +419,54 @@ Never forget how special and appreciated you are.
 
 <script>
 
-/* MIDNIGHT IST: 29 JUL 2026 */
+/* COUNTDOWN */
 
-const birthdayTime =
+const unlockTime =
 new Date("2026-07-29T00:00:00+05:30");
 
 function updateCountdown(){
 
-const now=new Date();
-const diff=birthdayTime-now;
+const now = new Date();
+const diff = unlockTime - now;
 
-if(diff<=0){
+if(diff <= 0){
 
 document.getElementById("countdownPage").style.display="none";
-
 document.getElementById("birthdayPage").style.display="block";
 
 startConfetti();
+startTyping();
+
+clearInterval(timer);
 
 return;
 }
 
-const days=Math.floor(diff/(1000*60*60*24));
-const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
-const seconds=Math.floor((diff%(1000*60))/1000);
+const days =
+Math.floor(diff/(1000*60*60*24));
+
+const hours =
+Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+
+const minutes =
+Math.floor((diff%(1000*60*60))/(1000*60));
+
+const seconds =
+Math.floor((diff%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML=
-`${days} Days <br>${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+`${days} Days<br>${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
 
 }
 
-setInterval(updateCountdown,1000);
+const timer=setInterval(updateCountdown,1000);
 updateCountdown();
 
 /* HEARTS */
 
-for(let i=0;i<40;i++){
+for(let i=0;i<50;i++){
 
-const heart=document.createElement("div");
+let heart=document.createElement("div");
 
 heart.className="heart";
 
@@ -469,20 +474,69 @@ heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=
-(15+Math.random()*25)+"px";
+heart.style.fontSize =
+(15+Math.random()*20)+"px";
 
-heart.style.animationDuration=
+heart.style.animationDuration =
 (6+Math.random()*8)+"s";
 
-heart.style.animationDelay=
+heart.style.animationDelay =
 Math.random()*5+"s";
 
 document.body.appendChild(heart);
 
 }
 
-/* SURPRISE */
+/* MUSIC */
+
+function playMusic(){
+document.getElementById("bgmusic").play();
+}
+
+/* LETTER TYPING */
+
+const letter = `
+
+My Dearest Jaanu,
+
+On your special day, I want you to know just how much happiness you bring into my life.
+
+You have a beautiful way of making ordinary moments feel extraordinary.
+
+Thank you for your kindness, your warmth, your laughter, and every memory we have shared.
+
+May this birthday bring you endless smiles, beautiful surprises, and dreams that come true.
+
+You deserve all the happiness in the world.
+
+Sending the biggest hugs and all my love.
+
+❤️ Forever,
+Sonuu
+
+`;
+
+function startTyping(){
+
+let i=0;
+
+const el=document.getElementById("typedLetter");
+
+const type=setInterval(()=>{
+
+el.innerHTML += letter.charAt(i);
+
+i++;
+
+if(i>=letter.length){
+clearInterval(type);
+}
+
+},40);
+
+}
+
+/* ENVELOPE */
 
 function openEnvelope(){
 
@@ -494,7 +548,7 @@ document.getElementById("surprise").style.display="block";
 
 function startConfetti(){
 
-for(let i=0;i<150;i++){
+for(let i=0;i<200;i++){
 
 let c=document.createElement("div");
 
@@ -506,7 +560,7 @@ c.style.background=
 `hsl(${Math.random()*360},100%,60%)`;
 
 c.style.animationDuration=
-(3+Math.random()*4)+"s";
+(2+Math.random()*5)+"s";
 
 document.body.appendChild(c);
 
